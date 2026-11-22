@@ -1,0 +1,68 @@
+{% extends 'template.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>User List</h1>
+        {#时间显示：后端返回#}
+        <time datetime="{{ now|date:'Y-m-d H:i:s' }}">Latest Visiting Time：{{ now|date:'Y年m月d日 H时i分' }}</time>
+        <a href="../add/">Add User</a>
+    </div>
+
+    <div class="form-group">
+        <table border="1" class="table table-striped" >
+            <thead>
+            <tr>
+                <th>Userid</th>
+                <th>UserName</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Group</th>
+                <th>Score</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if not users %}
+                <tr>
+                    <td>Nodata</td>
+                    <td>Nodata</td>
+                    <td>Nodata</td>
+                    <td>Nodata</td>
+                    <td>Nodata</td>
+                    <td>Nodata</td>
+                </tr>
+            {% endif %}
+
+            {% for usr in users %}
+                <tr>
+                    <td>{{ usr.id }}</td>
+                    <td>{{ usr.uname|upper}}</td>
+                    <td>{{ usr.age }}</td>
+                    <td>{{ usr.gender }}</td>
+                    <td>{{ usr.group }}</td>
+                    <td>{{ usr.score }}</td>
+                    <td>
+                        <a class="btn btn-primary btn-xs" href="../edit/?">edit</a>
+                        <a class="btn btn-danger btn-xs" href="../delete/?nid={{ usr.id }}">delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="container" align="right">
+    {#页面时间显示：js浏览器系统时间，实时更新#}
+    <time id="current-time">{{ "Current Time" }}</time>
+
+    <script>
+        const timeElement = document.getElementById('current-time');
+        function updateTime() {
+            const now = new Date();
+            timeElement.textContent = now.toLocaleString();
+            timeElement.dateTime = now.toISOString();
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+    </div>
+
+{% endblock %}

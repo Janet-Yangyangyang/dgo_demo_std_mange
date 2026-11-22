@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_title }}</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap538/css/bootstrap.min.css' %}">
+    <style>
+        .navbar {
+           border-radius:0;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">JASpace</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-4">
+    {#          类名	    含义	                            作用#}
+    {#        navbar-nav	Navbar Navigation	        设置导航菜单的基本样式#}
+    {#        me-auto	    Margin End: Auto	        将末端外边距设为自动，通常用于把后续元素推向右侧#}
+    {#        mb-2	        Margin Bottom: 2	        设置底部外边距#}
+    {#        mb-lg-0	    Margin Bottom: 0（大屏幕）	屏幕达到 Bootstrap 的 lg 断点时，取消底部外边距#}
+    {#        几个容易混淆的缩写：#}
+    {#        - m = margin（外边距）#}
+    {#        - p = padding（内边距）#}
+    {#        - t = top（上）#}
+    {#        - b = bottom（下）#}
+    {#        - s = start（起始方向）#}
+    {#        - e = end（结束方向）#}
+    {#        - x = 水平方向#}
+    {#        - y = 垂直方向#}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Groups</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Students</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+            <div class="d-flex gap-4" align="right">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ Username }} <span class="caret" >3</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">My Information</a></li>
+                <li><a class="dropdown-item" href="#">My Courses</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Log Out</a></li>
+              </ul>
+            </li>
+            </div>
+        </div>
+      </div>
+    </nav>
+
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+
+
+    <script src="{% static 'js/jquery-4.0.0.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap538/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

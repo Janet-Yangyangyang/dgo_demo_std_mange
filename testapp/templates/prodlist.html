@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ProdsList</title>
+</head>
+<body>
+    <h1> {{ title }} </h1>
+    <div>
+        <ul>
+{#            lsc = ls.count#}
+{#            <div>{{ lsc }}</div>#}
+            <li>{{ ls.0 }}</li>
+            <li>{{ ls.1 }}</li>
+            <li>{{ ls.2 }}</li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            {% for i in tils %}
+            <li>{{ i }}</li>
+            {% endfor %}
+        </ul>
+        <div>
+            <ul>
+                {% for n,m in pdic.items %}
+                    <li>{{ n  }} ： {{ m }}</li>
+                    {% if m < 2020  %}
+                        <h5> 稍早时间 </h5>
+                    {% elif m < 2023 %}
+                        <h5> 近年来</h5>
+                    {% elif m < 2026 %}
+                        <h5> 最近</h5>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <ul>
+                {% for d in prd_pack %}
+                    <li> {{ d.prd }} = {{ d.ti }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

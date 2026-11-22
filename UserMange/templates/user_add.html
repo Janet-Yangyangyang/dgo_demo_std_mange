@@ -1,0 +1,18 @@
+{% extends "template.html" %}
+
+{% block content %}
+<div>
+    <h1>AddUser</h1>
+    <form method="post"> {#如果提交位置还是当前位置不用写action#}
+        {% csrf_token %}
+        <label>
+            <input type="text" name="name" placeholder="UserName">
+            <input type="password" name="password" placeholder="password">
+            <input type="number" name="age" placeholder="age">
+            <input type="submit" value="Add">
+    {#        <input type="text" name="group" placeholder="groupname">#}
+        </label>
+    </form>
+</div>
+
+{% endblock %}

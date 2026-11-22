@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h1>User Login</h1>
+<form method="POST" action="/test/login/">
+    <label>
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Your Username" autocomplete="username"/>
+    </label>
+    <label>
+        <input type="password" name="password" placeholder="Your Password" autocomplete="current-password"/>
+    </label>
+    <input type="submit" value="Login"/>
+    {% if error_msg == 404 %}
+        <p style="color:#ff1a21">Invalid username</p>
+    {% elif error_msg == 405 %}
+        <p style="color:#ff1a21">Invalid password</p>
+    {% endif %}
+{#    <p style="color:#ff1a21">{{ error_msg }}</p>#}
+{#    <span style="color:#ff1a21">{{ error_msg }}</span>#}
+</form>
+
+</body>
+</html>
